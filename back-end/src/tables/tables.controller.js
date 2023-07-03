@@ -58,10 +58,7 @@ function hasProperties(...properties){
 
   function validCapacity(req, res, next){
     const { capacity } = req.body.data;
-    if(isNaN(capacity)){
-        return next({status: 400, message: "'capacity' must be a number greater than zero."});
-    }
-    if(capacity < 1){
+    if( capacity < 1 || typeof capacity !== "number"){
         return next({status: 400, message: "'capacity' must be a number greater than zero."});
     }
     next();
@@ -96,7 +93,7 @@ function hasProperties(...properties){
     const people = res.locals.reservation.people;
     const capacity = res.locals.table.capacity;
     if(people > capacity) {
-        return next({ status: 400, message: "Party size does not fit at this table"});
+        return next({ status: 400, message: "Table capacity is not large enough for this party"});
     }
     next();
   }
@@ -105,6 +102,14 @@ function hasProperties(...properties){
     const reservation_id = res.locals.table.reservation_id;
     if(reservation_id){
         return next({ status: 400, message: "Table is occupied"});
+    }
+    next();
+  }
+
+  function unoccupiedTable(req, res, next){
+    const reservation_id = res.locals.table.reservation_id;
+    if(!reservation_id){
+      return next({ status: 400, message: "Table is not occupied"});
     }
     next();
   }
@@ -120,6 +125,31 @@ function hasProperties(...properties){
   async function sitReservation(req, res){
     const updatedTable = {...req.body.data, table_id: res.locals.table.table_id };
     const updatedReservation = {...res.locals.reservation, status: "seated"};
+    const data = await service.update(updatedTable, updatedReservation);
+    res.json({ data });
+  }
+
+  async function getReservation(req, res, next){
+    const reservation_id = res.locals.table.reservation_id;
+    const reservation = await service.readReservation(reservation_id);
+    if(reservation){
+      res.locals.reservation = reservation;
+      return next();
+    }
+    next({ status: 404, message: `Reservation ${reservation_id} not found`})
+  }
+
+  async function deleteReservation(req, res){
+    const table = res.locals.table;
+    const updatedTable = {
+      ...table,
+      reservation_id: null
+    }
+  const updatedReservation = {
+    ...res.locals.reservation,
+      reservation_id: res.locals.reservation.reservation_id,
+      status: "finished"
+  }
     const data = await service.update(updatedTable, updatedReservation);
     res.json({ data });
   }
@@ -141,4 +171,10 @@ module.exports = {
         sufficientCapacity,
         occupiedTable,
         asyncErrorBoundary(sitReservation)],
+    deleteReservation: [
+      asyncErrorBoundary(tableExists),
+      unoccupiedTable,
+      asyncErrorBoundary(getReservation),
+      asyncErrorBoundary(deleteReservation)
+    ]
 }

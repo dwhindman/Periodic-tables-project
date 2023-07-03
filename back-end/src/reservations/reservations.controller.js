@@ -68,8 +68,9 @@ function hasValidDate(req, res, next){
 function hasValidTime(req, res, next){
   const { data = {} } = req.body;
   const time = data["reservation_time"];
-  if(!/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(time)){
-    next({status: 400, message: "reservation_time"});
+  if (!/^([0-1][0-9]|2[0-3]):([0-5][0-9])$/.test(time)) {
+    next({ status: 400, message: `Invalid reservation_time`,
+    });
   }
   
   const hours = Number(time.split(":")[0]);
@@ -94,17 +95,15 @@ function peopleIsNumber(req, res, next){
 }
 
 function validStatus(req, res, next){
+  const validStatuses = ["booked", "seated", "finished", "cancelled"];
   const { status } = req.body.data;
-  const currentStatus = res.locals.reservations.status;
-
-  if(currentStatus === "finished" || currentStatus === "cancelled"){
-    return next({ status: 400, message: "Reservation status is finished"});
+  
+  if(status && !validStatuses.includes(status)){
+    next({status: 400, message: `Invalid status: ${status}`});
+  } else {
+    next();
   }
-  if(status === "booked" || status === "seated" || status === "finished" || status === "cancelled"){
-    res.locals.status = status;
-    return next();
-  }
-  next({status: 400, message: `Invalid status of ${status}`});
+  
 }
 
 function isBooked(req, res, next){
@@ -116,11 +115,12 @@ function isBooked(req, res, next){
   next();
 }
 
-async function updateStatus(req, res){
-  const { status } = res.locals;
-  const { reservation_id } = res.locals.reservation;
-  const data = await service.updateStatus(reservation_id, status);
-  res.status(200).json({ data });
+function isFinished(req, res, next) {
+  const currentStatus = res.locals.reservation.status;
+  if(currentStatus === "finished"){
+    next({ status: 400, message: "Cannot update a finished reservation"});
+  }
+  next();
 }
 
 async function list(req, res) {
@@ -160,6 +160,7 @@ async function update(req, res){
   res.status(200).json({ data });
 }
 
+
 module.exports = {
   list: asyncErrorBoundary(list),
   read: [reservationExists,
@@ -172,18 +173,20 @@ module.exports = {
     peopleIsNumber,
     isBooked,
     asyncErrorBoundary(create)],
-    update: [
-      hasValidProperties,
-      hasProperties("first_name", "last_name", "mobile_number", "reservation_date", "reservation_time", "people"),
-      hasValidDate,
-      peopleIsNumber,
-      reservationExists,
-      validStatus,
-      asyncErrorBoundary(update)
-    ],
-    updateStatus:[
-      reservationExists,
-      validStatus,
-      asyncErrorBoundary(updateStatus),
-    ],
+  update: [
+    hasValidProperties,
+    hasProperties("first_name", "last_name", "mobile_number", "reservation_date", "reservation_time", "people"),
+    hasValidTime,
+    hasValidDate,
+    peopleIsNumber,
+    asyncErrorBoundary(reservationExists),
+    validStatus,
+    asyncErrorBoundary(update)
+  ],
+  updateStatus:[
+    asyncErrorBoundary(reservationExists),
+    validStatus,
+    isFinished,
+    asyncErrorBoundary(update),
+  ],
 };
