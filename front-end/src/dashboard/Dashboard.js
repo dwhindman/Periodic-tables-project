@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { listReservations } from "../utils/api";
+import { listReservations, updateStatus } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
+import ListReservations from "../Reservations/ListReservations";
+import NavBtns from "./NavBtns";
 
 /**
  * Defines the dashboard page.
@@ -9,28 +11,42 @@ import ErrorAlert from "../layout/ErrorAlert";
  * @returns {JSX.Element}
  */
 function Dashboard({ date }) {
+  const filterResults = true;
+
   const [reservations, setReservations] = useState([]);
-  const [reservationsError, setReservationsError] = useState(null);
+  const [resError, setResError] = useState(null);
 
-  useEffect(loadDashboard, [date]);
+  useEffect( loadDashboard, [date]);
 
-  function loadDashboard() {
+  function loadDashboard(){
     const abortController = new AbortController();
-    setReservationsError(null);
+    setResError(null);
     listReservations({ date }, abortController.signal)
       .then(setReservations)
-      .catch(setReservationsError);
+      .catch(setResError);
+
     return () => abortController.abort();
   }
+
+  const cancelHandler = (event) => {
+    const result = window.confirm("Click confirm to cancel this reservation. This action cannot be undone.");
+      if(result){
+          updateStatus(event.target.value, "cancelled");
+          loadDashboard();
+      }
+  };
 
   return (
     <main>
       <h1>Dashboard</h1>
+      <ErrorAlert error={resError} />
       <div className="d-md-flex mb-3">
-        <h4 className="mb-0">Reservations for date</h4>
+        <h4 className="mb-0">Reservations on {date}</h4>
       </div>
-      <ErrorAlert error={reservationsError} />
-      {JSON.stringify(reservations)}
+      <ListReservations reservations={reservations} filterResults={filterResults} cancelHandler={cancelHandler} />      
+      <NavBtns currentDate={date} />
+
+
     </main>
   );
 }
