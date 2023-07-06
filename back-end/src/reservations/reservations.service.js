@@ -42,5 +42,4 @@ module.exports = {
     read,
     update,
     search,
-    // updateStatus
 }
