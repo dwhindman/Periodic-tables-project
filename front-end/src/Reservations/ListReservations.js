@@ -26,7 +26,7 @@ function ListReservations({reservations, cancelHandler, filterResults}){
                         <div className="reservation" key={reservation.reservation_id}>
                             <div>
                                 <div>   
-                                    <h4>
+                                    <h4 data-reservation-id-status={reservation.reservation_id}>
                                     #:{reservation.reservation_id}: 
                                     {reservation.last_name},
                                     {reservation.first_name}
@@ -63,12 +63,7 @@ function ListReservations({reservations, cancelHandler, filterResults}){
                                     </div>
                                 ) : ("")}
                             </div>
-                                {/* reservation_date={reservation.date}
-                                reservation_time={reservation.reservation_time}
-                                people={reservation.people}
-                                status={reservation.status}
-                                setReservationsError={setReservationsError}
-                                loadReservations={loadReservations} */}
+
                         </div>
                         )
                  })
