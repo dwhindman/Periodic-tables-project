@@ -29,7 +29,7 @@ function Dashboard({ date }) {
   }
 
   const cancelHandler = (event) => {
-    const result = window.confirm("Click confirm to cancel this reservation. This action cannot be undone.");
+    const result = window.confirm("Do you want to cancel this reservation?");
       if(result){
           updateStatus(event.target.value, "cancelled");
           loadDashboard();

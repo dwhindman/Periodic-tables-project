@@ -7,6 +7,10 @@ import { today } from "../utils/date-time";
 import useQuery from "../utils/useQuery";
 import CreateReservation from "../Reservations/CreateReservation";
 import EditReservation from "../Reservations/EditReservation";
+import Search from "../Search/Search";
+import SeatReservation from "../Reservations/SeatReservation";
+import CreateTable from "../Tables/CreateTable";
+
 
 /**
  * Defines all the routes for the application.
@@ -33,8 +37,17 @@ function Routes() {
       <Route path="/reservations/new">
         <CreateReservation />
       </Route>
+      <Route path="/reservations/:reservation_id/seat">
+        <SeatReservation />
+      </Route>
       <Route path="/reservations/:reservation_id/edit">
         <EditReservation />
+      </Route>
+      <Route path="/tables/new">
+        <CreateTable />
+      </Route>
+      <Route path="/search">
+        <Search />
       </Route>
       <Route>
         <NotFound />
