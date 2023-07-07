@@ -10,13 +10,13 @@ function ListTables({ tables, finishHandler }){
                         <div>
                             <h5>Sits a party of {table.capacity}</h5>
                             <p data-table-id-status={table.table_id}>
-                                {table.occupied ? "occupied" : "free"}
+                                {table.reservation_id === null ? "Free" : "Occupied"}
                             </p>
                         </div>
                     </div>
                     <div>
-                        {table.occupied ? (
-                            <button type="button" className="finish"
+                        {table.reservation_id ? (
+                            <button type="button" className="btn-success rounded"
                                 data-table-id-finish={table.table_id}
                                 onClick={() => finishHandler(table.table_id)}
                                 > 

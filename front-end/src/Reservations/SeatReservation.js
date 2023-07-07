@@ -49,7 +49,7 @@ function SeatReservation(){
                                     value={table.table_id}
                                     disabled={table.capacity < reservation.people || table.occupied }
                                     >
-                                        Table: {table.table_name} Capacity: {table.capacity}
+                                        {table.table_name} - {table.capacity}
                                     </option>
                             ))}
                         </select>

@@ -4,6 +4,7 @@ import ErrorAlert from "../layout/ErrorAlert";
 import ListReservations from "../Reservations/ListReservations";
 import ListTables from "../Tables/ListTables";
 import NavBtns from "./NavBtns";
+import { useHistory } from "react-router-dom";
 
 /**
  * Defines the dashboard page.
@@ -12,6 +13,7 @@ import NavBtns from "./NavBtns";
  * @returns {JSX.Element}
  */
 function Dashboard({ date }) {
+  const history = useHistory();
   const filterResults = true;
 
   const [reservations, setReservations] = useState([]);
@@ -20,14 +22,14 @@ function Dashboard({ date }) {
 
   useEffect( loadDashboard, [date]);
 
-  function loadDashboard(){
+   function loadDashboard(){
     const abortController = new AbortController();
     setResError(null);
-    listReservations({ date }, abortController.signal)
+     listReservations({ date }, abortController.signal)
       .then(setReservations)
       .catch(setResError);
 
-    listTables()
+     listTables()
       .then(setTables);
 
     return () => abortController.abort();
@@ -35,7 +37,7 @@ function Dashboard({ date }) {
 
   async function finishHandler(table_id){
     const abortController = new AbortController();
-    const result = window.confirm("Are you ready to sit this table? This cannot be undone.");
+    const result = window.confirm("Is this table ready to seat new guests?");
 
     if(result){
       await finishTable(table_id, abortController.signal);
@@ -49,7 +51,8 @@ function Dashboard({ date }) {
     const result = window.confirm("Do you want to cancel this reservation?");
       if(result){
           updateStatus(event.target.value, "cancelled");
-          loadDashboard();
+          loadDashboard()
+          history.go();
       }
   };
 
