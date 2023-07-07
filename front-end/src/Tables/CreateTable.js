@@ -43,21 +43,34 @@ function CreateTable(){
 
             <form onSubmit={submitHandler}>
                 <div>
-                    <label htmlFor="table_name">Table Name</label>
+                    <label htmlFor="table_name">Table Name:</label>
                     <input id="table_name"
                         name="table_name"
+                        type="text"
+                        value={table.table_name}
+                        placeholder="Name of table"
+                        minLength="2"
+                        onChange={handleChange}
+                        required={true}
+                        />
+                </div>
+                <div>
+                    <label htmlFor="capacity">Capacity:</label>
+                    <input id="capacity"
+                        name="capacity"
                         type="number"
                         value={table.capacity}
+                        placeholder="capacity"
                         min={1}
                         onChange={handleChange}
                         required={true}
                         />
                 </div>
                 <div>
-                    <button type="submit">
+                    <button className="btn-success rounded"type="submit">
                         Submit
                     </button>
-                    <button type="button" onClick={() => history.go(-1)}>
+                    <button className="btn-warning rounded"type="button" onClick={() => history.go(-1)}>
                         Cancel
                     </button>
                 </div>

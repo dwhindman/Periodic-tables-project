@@ -22,15 +22,15 @@ function NavBtns({ currentDate }){
 
     return (
         <>
-            <button type="button" className="btn-primary rounded" onClick={handlePrev}>
+            <button type="button" className="btn-success rounded" onClick={handlePrev}>
                 Previous
             </button>
 
-            <button type="button" className="btn-outline-dark rounded" onClick={handleToday}>
+            <button type="button" className="btn-outline-success rounded" onClick={handleToday}>
                 Today
             </button>
             
-            <button type="button" className="btn-primary rounded" onClick={handleNext}>
+            <button type="button" className="btn-success rounded" onClick={handleNext}>
                 Next
             </button>
         </>

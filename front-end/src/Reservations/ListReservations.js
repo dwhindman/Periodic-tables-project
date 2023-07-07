@@ -2,11 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function ListReservations({reservations, cancelHandler, filterResults}){
-
+    
+    //filter out finished and cancelled reservations
     function statusCheck(reservation){
         return (reservation.status === "finished" || reservation.status === "cancelled");
     }
 
+    //formats time into standard 12 hour format
     function timeFormat(time){
         let hours = Number(time.split(":")[0]);
         let minutes = Number(time.split(":")[1]);
@@ -27,9 +29,8 @@ function ListReservations({reservations, cancelHandler, filterResults}){
                             <div>
                                 <div>   
                                     <h4 data-reservation-id-status={reservation.reservation_id}>
-                                    #:{reservation.reservation_id}: 
-                                    {reservation.last_name},
-                                    {reservation.first_name}
+                                    Reservation ID: {reservation.reservation_id}  
+                                    <br></br>Name: {reservation.last_name}, {reservation.first_name}
                                     </h4>
                                     <p>Number of Guests: {reservation.people}</p>
                                 </div> 
@@ -49,12 +50,12 @@ function ListReservations({reservations, cancelHandler, filterResults}){
                                 {reservation.status === "booked" ? (
                                     <div>
                                         <Link to={`/reservations/${reservation.reservation_id}/seat`}>
-                                            Seat
+                                            <button className="btn-success rounded" type="btn">Seat</button>
                                         </Link>
                                         <Link to={`/reservations/${reservation.reservation_id}/edit`}>
-                                            Edit
+                                            <button className="btn-warning rounded">Edit</button>
                                         </Link>
-                                        <button type="button" 
+                                        <button className="btn-danger rounded"type="button" 
                                         data-reservation-id-cancel={reservation.reservation_id}
                                         value={reservation.reservation_id}
                                         onClick={cancelHandler}>

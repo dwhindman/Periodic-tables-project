@@ -39,7 +39,7 @@ function SeatReservation(){
                 <div>
                     <select id="table_id"
                         name="table_id"
-                        value="table_id"
+                        value={tableId}
                         onChange={handleChange}
                         required={true}
                         >
@@ -55,10 +55,10 @@ function SeatReservation(){
                         </select>
                 </div>
                 <div>
-                    <button type="submit">
+                    <button className="btn-outline-success rounded" type="submit">
                         Submit
                     </button>
-                    <button type="button" onClick={() => history.go(-1)}>
+                    <button className="btn-warning rounded" type="button" onClick={() => history.go(-1)}>
                         Cancel
                     </button>
                 </div>

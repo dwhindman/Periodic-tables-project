@@ -19,7 +19,7 @@ function ReservationForm({reservation, submitHandler, handleChange}){
                     placeholder="First Name"
                     onChange={handleChange}
                     value={reservation.first_name}
-                    required />
+                    required={true} />
                 </div>
         
                 <div>
@@ -30,19 +30,19 @@ function ReservationForm({reservation, submitHandler, handleChange}){
                     placeholder="Last Name"
                     onChange={handleChange}
                     value={reservation.last_name}
-                    required />
+                    required={true} />
                 </div>
         
                 <div>
                     <label htmlFor="mobile_number">Mobile Number:</label>
                     <input id="mobile_number" 
-                    type="tel" 
+                    type="text" 
                     name="mobile_number"
                     pattern="\d{3}[\-]\d{3}[\-]\d{4}"
                     placeholder="xxx-xxx-xxxx"
                     onChange={handleChange}
                     value={reservation.mobile_number}
-                    required />
+                    required={true} />
                 </div>
                 
                 <div>
@@ -54,7 +54,7 @@ function ReservationForm({reservation, submitHandler, handleChange}){
                     pattern="\d{4}-\d{2}-\d{2}"
                     onChange={handleChange}
                     value={reservation.reservation_date}
-                    required />
+                    required={true} />
                 </div>
 
                 <div>
@@ -66,7 +66,7 @@ function ReservationForm({reservation, submitHandler, handleChange}){
                     pattern="[0-9]{2}:[0-9]{2}"
                     onChange={handleChange}
                     value={reservation.reservation_time}
-                    required />
+                    required={true} />
                 </div>
 
                 <div>
@@ -79,11 +79,11 @@ function ReservationForm({reservation, submitHandler, handleChange}){
                     max="10"
                     onChange={handleChange}
                     value={reservation.people}
-                    required />
+                    required={true} />
                 </div>
             
-                <button type="submit" className="btn-primary rounded" >Submit</button>
-                <button type="button" className="btn-danger rounded" onClick={() => history.go(-1)}>Cancel</button>
+                <button type="submit" className="btn-outline-success rounded" >Submit</button>
+                <button type="button" className="btn-outline-warning rounded" onClick={() => history.go(-1)}>Cancel</button>
             </form>
         </>
     )

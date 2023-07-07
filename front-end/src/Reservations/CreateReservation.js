@@ -18,7 +18,7 @@ function CreateReservation(){
       };
 
     const [reservation, setReservation] = useState({...initialFormState});
-    const [reservationErrors, setReservationsErrors] = useState(null);
+    const [resErrors, setResErrors] = useState(null);
 
     const handleChange = (event) => {
         if(event.target.name === "people"){
@@ -40,13 +40,13 @@ function CreateReservation(){
         
         const errors = ValidateReservation(reservation);
         if(errors.length){
-            return setReservationsErrors(errors);
+            return setResErrors(errors);
         }
         try{
             await createReservation(reservation, abortController.signal)
             history.push(`/dashboard?date=${reservation.reservation_date}`)
         } catch(error) {
-            setReservationsErrors([error]);
+            setResErrors([error]);
         }
         return () => abortController.abort();
     };
@@ -55,7 +55,7 @@ function CreateReservation(){
         <>
             <div>
                 <h2>New Reservation</h2>
-                <ResErrors errors={reservationErrors} />
+                <ResErrors errors={resErrors} />
             </div>
             
             <ReservationForm reservation={reservation} submitHandler={submitHandler} handleChange={handleChange} />

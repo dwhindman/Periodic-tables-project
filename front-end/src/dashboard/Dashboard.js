@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { listReservations, updateStatus } from "../utils/api";
+import { listReservations, listTables, finishTable, updateStatus } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 import ListReservations from "../Reservations/ListReservations";
+import ListTables from "../Tables/ListTables";
 import NavBtns from "./NavBtns";
 
 /**
@@ -15,6 +16,7 @@ function Dashboard({ date }) {
 
   const [reservations, setReservations] = useState([]);
   const [resError, setResError] = useState(null);
+  const [tables, setTables] = useState([]);
 
   useEffect( loadDashboard, [date]);
 
@@ -24,6 +26,21 @@ function Dashboard({ date }) {
     listReservations({ date }, abortController.signal)
       .then(setReservations)
       .catch(setResError);
+
+    listTables()
+      .then(setTables);
+
+    return () => abortController.abort();
+  }
+
+  async function finishHandler(table_id){
+    const abortController = new AbortController();
+    const result = window.confirm("Are you ready to sit this table? This cannot be undone.");
+
+    if(result){
+      await finishTable(table_id, abortController.signal);
+      loadDashboard();
+    }
 
     return () => abortController.abort();
   }
@@ -43,8 +60,16 @@ function Dashboard({ date }) {
       <div className="d-md-flex mb-3">
         <h4 className="mb-0">Reservations on {date}</h4>
       </div>
-      <ListReservations reservations={reservations} filterResults={filterResults} cancelHandler={cancelHandler} />      
-      <NavBtns currentDate={date} />
+      <div>
+        <ListReservations reservations={reservations} filterResults={filterResults} cancelHandler={cancelHandler} />
+      </div>
+      <div>
+        <NavBtns currentDate={date} />
+      </div>
+      <div>
+        <h2>Tables</h2>
+        <ListTables tables={tables} finishHandler={finishHandler} />
+      </div>
 
 
     </main>
