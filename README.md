@@ -1,4 +1,4 @@
-# Capstone: Restaurant Reservation System
+# Periodic Tables: Restaurant Reservation System
 
 > You have been hired as a full stack developer at _Periodic Tables_, a startup that is creating a reservation system for fine dining restaurants.
 > The software is used only by restaurant personnel when a customer calls to request a reservation.
@@ -7,6 +7,27 @@
 There are no user stories for deployment: it is expected that you will deploy the application to production after you finish a user story.
 
 There are no user stories for logging: it is expected that you will add logging to the application with enough detail to help you diagnose issues in production.
+
+## Application Link
+
+## Summary
+This application serves as a restaurant reservation system that allows the restaurant staff the ability to keep track of their reservations while customers can make reservations online. It contains these functionalities.
+
+Customers: Customers can create, edit and delete their reservations online within the business hours of the restaurant.
+
+Staff: Staff are able to view and create tables by ID and capacity. Staff can view, edit, assign and cancel current and future reservations to specific tables that are available as well. For quick navigation, staff are also able to search for reservations by phone number.
+
+## Technology Used
+Frontend: JavaScript, React, API calls, HTML, and CSS
+
+Backend: PostgreSQL, Node.js, Express, Knex, and CORS
+
+## Screenshots
+
+## Installation
+
+## Future updates
+With more time, I plan on including styling to add a more high-end feel to the website. This website could also be improved by having separate customer and staff functionalities like online ordering for customers or a floorplan of the restaurant for staff with table locations so staff know which reservation is at each table, including how long they have been at each table to help predict when that table may be available for another party.
 
 ## Existing files
 
