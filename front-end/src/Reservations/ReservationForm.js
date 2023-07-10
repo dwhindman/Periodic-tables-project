@@ -83,7 +83,7 @@ function ReservationForm({reservation, submitHandler, handleChange}){
                 </div>
             
                 <button type="submit" className="btn-outline-success rounded" >Submit</button>
-                <button type="button" className="btn-outline-danger rounded" onClick={() => history.goBack()}>Cancel</button>
+                <button type="button" className="btn-outline-danger rounded" onClick={() => history.go("./dashboard")}>Cancel</button>
             </form>
         </>
     )
