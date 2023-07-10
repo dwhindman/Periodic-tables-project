@@ -1,0 +1,16 @@
+.card{
+    color:black;
+    background-color: rgb(134, 148, 161);
+    width: fit-content;
+}
+
+.wrapper{
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+button{
+    display: flexbox;
+    justify-content: space-between;
+    
+}

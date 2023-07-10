@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./ListReservations.css";
 
 function ListReservations({reservations, cancelHandler, filterResults}){
     
@@ -25,25 +26,29 @@ function ListReservations({reservations, cancelHandler, filterResults}){
             return reservations.map((reservation) => {
                     return filterResults && statusCheck(reservation) ? ("") :
                         (
+                        <div className="wrapper">
                         <div className="reservation" key={reservation.reservation_id}>
-                            <div>
-                                <div>   
+                            
+                            <div className="card" >
+                                <div className="card-body">
+                                    <div className="card-title">
                                     <h4 data-reservation-id-status={reservation.reservation_id}>
                                     Reservation ID: {reservation.reservation_id}  
                                     <br></br>Name: {reservation.last_name}, {reservation.first_name}
                                     </h4>
                                     <p>Number of Guests: {reservation.people}</p>
-                                </div> 
+                                    </div>
 
-                                <div>
-                                    <h5>Time: {timeFormat(reservation.reservation_time)}</h5>
-                                </div>
-                                <div>
-                                    <p>Contact: {reservation.mobile_number}</p>
-                                </div>
-                                <div>
-                                    Reservation Status: {reservation.status}
-                                </div>
+                                    <div className="card-text">
+                                        <h5>Time: {timeFormat(reservation.reservation_time)}</h5>
+                                    </div>
+                                    <div>
+                                        Reservation Status: {reservation.status}
+                                    </div>
+                                    <div>
+                                        <p>Contact: {reservation.mobile_number}</p>
+                                    </div>
+                                </div> 
                             </div>
                             
                             <div>
@@ -66,8 +71,9 @@ function ListReservations({reservations, cancelHandler, filterResults}){
                             </div>
 
                         </div>
+                        </div>
                         )
-                 })
+                 })    
         } else {
             return  <h4>No reservations found</h4>
         }

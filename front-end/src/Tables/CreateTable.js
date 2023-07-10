@@ -67,10 +67,10 @@ function CreateTable(){
                         />
                 </div>
                 <div>
-                    <button className="btn-success rounded"type="submit">
+                    <button className="btn-outline-success rounded" type="submit">
                         Submit
                     </button>
-                    <button className="btn-warning rounded"type="button" onClick={() => history.go(-1)}>
+                    <button className="btn-outline-danger rounded" type="button" onClick={() => history.go(-1)}>
                         Cancel
                     </button>
                 </div>

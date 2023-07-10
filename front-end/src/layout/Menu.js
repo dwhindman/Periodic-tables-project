@@ -1,5 +1,5 @@
 import React from "react";
-
+import "./Menu.css";
 import { Link } from "react-router-dom";
 
 /**
@@ -16,8 +16,8 @@ function Menu() {
           className="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0"
           to="/"
         >
-          <div className="sidebar-brand-text mx-3">
-            <span>Periodic Tables</span>
+          <div className="sidebar-brand-text mx-3 pt-3">
+            <span style={{fontFamily: "Great Vibes"}}><h3>Periodic Tables</h3></span>
           </div>
         </Link>
         <hr className="sidebar-divider my-0" />

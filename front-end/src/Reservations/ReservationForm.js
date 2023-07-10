@@ -10,7 +10,7 @@ function ReservationForm({reservation, submitHandler, handleChange}){
 
             <small className="text-danger">*Note: All fields are required</small>
 
-            <form onSubmit={submitHandler}>
+            <form className="rounded" onSubmit={submitHandler}>
                 <div>
                 <label htmlFor="first_name">First Name:</label>
                     <input id="first_name" 
@@ -83,7 +83,7 @@ function ReservationForm({reservation, submitHandler, handleChange}){
                 </div>
             
                 <button type="submit" className="btn-outline-success rounded" >Submit</button>
-                <button type="button" className="btn-outline-warning rounded" onClick={() => history.go(-1)}>Cancel</button>
+                <button type="button" className="btn-outline-danger rounded" onClick={() => history.go(-1)}>Cancel</button>
             </form>
         </>
     )

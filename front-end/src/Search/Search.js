@@ -46,8 +46,8 @@ function Search(){
             <div>
                 <form onSubmit={submitHandler}>
                     <div>
-                        <label htmlFor="mobile_number">Mobile Number</label>
-                        <input
+                        <label htmlFor="mobile_number">Mobile Number:</label>
+                        <input className="rounded"
                             id="mobile_number"
                             name="mobile_number"
                             type="text"
@@ -58,7 +58,7 @@ function Search(){
                             />
                     </div>
 
-                    <button type="submit">Find</button>
+                    <button className="btn-outline-primary rounded" type="submit">Find</button>
                 </form>
             </div>
             {submitted ? (

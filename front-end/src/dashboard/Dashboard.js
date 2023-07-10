@@ -5,6 +5,7 @@ import ListReservations from "../Reservations/ListReservations";
 import ListTables from "../Tables/ListTables";
 import NavBtns from "./NavBtns";
 import { useHistory } from "react-router-dom";
+import "./Dashboard.css";
 
 /**
  * Defines the dashboard page.
