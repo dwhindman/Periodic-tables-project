@@ -1,4 +1,4 @@
-# Capstone: Restaurant Reservation System
+# Periodic Tables: Restaurant Reservation System
 
 > You have been hired as a full stack developer at _Periodic Tables_, a startup that is creating a reservation system for fine dining restaurants.
 > The software is used only by restaurant personnel when a customer calls to request a reservation.
@@ -7,6 +7,8 @@
 There are no user stories for deployment: it is expected that you will deploy the application to production after you finish a user story.
 
 There are no user stories for logging: it is expected that you will add logging to the application with enough detail to help you diagnose issues in production.
+
+## Application Link
 
 ## Existing files
 
