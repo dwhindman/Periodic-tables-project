@@ -6,7 +6,7 @@ function ListTables({ tables, finishHandler }){
         <>
             {tables.map((table) => (
                 <div>
-                    <div key={table.table_id}>
+                    <div className="table" key={table.table_id}>
                         <h3>{table.table_name}</h3>
                         <div>
                             <h5>Sits a party of {table.capacity}</h5>
