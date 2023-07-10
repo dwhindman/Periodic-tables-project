@@ -58,7 +58,7 @@ function SeatReservation(){
                     <button className="btn-outline-success rounded" type="submit">
                         Submit
                     </button>
-                    <button className="btn-warning rounded" type="button" onClick={() => history.go(-1)}>
+                    <button className="btn-warning rounded" type="button" onClick={() => history.goBack()}>
                         Cancel
                     </button>
                 </div>
