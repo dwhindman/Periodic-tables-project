@@ -10,6 +10,27 @@ There are no user stories for logging: it is expected that you will add logging 
 
 ## Application Link
 
+## Summary
+This application serves as a restaurant reservation system that allows the restaurant staff the ability to keep track of their reservations while customers can make reservations online. It contains these functionalities.
+
+Customers: Customers can create, edit and delete their reservations online within the business hours of the restaurant.
+
+Staff: Staff are able to view and create tables by ID and capacity. Staff can view, edit, assign and cancel current and future reservations to specific tables that are available as well. For quick navigation, staff are also able to search for reservations by phone number.
+
+## Technology Used
+Frontend: JavaScript, React, API calls, HTML, and CSS
+
+Backend: PostgreSQL, Node.js, Express, Knex, and CORS
+
+## Application Link
+
+## Screenshots
+
+## Installation
+
+## Future updates
+With more time, I plan on including styling to add a more high-end feel to the website. This website could also be improved by having separate customer and staff functionalities like online ordering for customers or a floorplan of the restaurant for staff with table locations so staff know which reservation is at each table, including how long they have been at each table to help predict when that table may be available for another party.
+
 ## Existing files
 
 This repository is set up as a *monorepo*, meaning that the frontend and backend projects are in one repository. This allows you to open both projects in the same editor.
