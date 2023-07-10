@@ -22,8 +22,6 @@ Frontend: JavaScript, React, API calls, HTML, and CSS
 
 Backend: PostgreSQL, Node.js, Express, Knex, and CORS
 
-## Application Link
-
 ## Screenshots
 
 ## Installation
