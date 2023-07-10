@@ -1,11 +1,19 @@
 const knex = require("../db/connection");
 
-function list(date){
+function list(date, mobile_number){
+    if(date){
     return knex("reservations")
         .select("*")
         .where({ reservation_date: date} )
-        .whereNot({ status : "finished" })
-        .orderBy("reservation_time");
+        .orderBy("reservation_time", "asc");
+    }
+    if(mobile_number){
+        return knex("reservations")
+            .select("*")
+            .where("mobile_number", "like", `${mobile_number}%`);
+    }
+    return knex("reservations")
+        .select("*");
 }
 
 function create(newReservation){

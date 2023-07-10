@@ -126,8 +126,9 @@ function isFinished(req, res, next) {
 async function list(req, res) {
   const date = req.query.date;
   const mobile_number = req.query.mobile_number;
-  const data = await (date ? service.list(date) : service.search(mobile_number));
-  res.json({data});
+  const reservations = await service.list(date, mobile_number);
+  const result = reservations.filter((reservation) => reservation.status !== "finished");
+  res.json({data: result});
 
 }
 
