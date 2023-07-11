@@ -17,10 +17,13 @@ Reservation Form:
 ![Screenshot (28)](https://github.com/dwhindman/Periodic-tables-project/assets/122843020/54d393f9-cb11-4829-a492-7c6cf32e8270)
 
 Create a new table for guests to sit at:
+![Screenshot (31)](https://github.com/dwhindman/Periodic-tables-project/assets/122843020/4dc6b93d-ad32-43d3-9dff-50b4f3fb2c21)
 
 Search for a reservation by phone number:
+![Screenshot (30)](https://github.com/dwhindman/Periodic-tables-project/assets/122843020/7b454f9c-2a33-4685-8060-69b93004d394)
 
 Reservations made within business hours:
+![Screenshot (32)](https://github.com/dwhindman/Periodic-tables-project/assets/122843020/d8a3895a-e22c-4cfa-8831-ece809b9972f)
 
 ## Application Link
 Frontend: https://periodic-table-project.onrender.com
