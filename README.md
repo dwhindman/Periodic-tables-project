@@ -1,13 +1,21 @@
 
 # Periodic Tables: Restaurant Reservation System
 
-> You have been hired as a full stack developer at _Periodic Tables_, a startup that is creating a reservation system for fine dining restaurants.
-> The software is used only by restaurant personnel when a customer calls to request a reservation.
-> At this point, the customers will not access the system online.
+## Summary
+This application serves as a restaurant reservation system that allows the restaurant staff the ability to keep track of their reservations while customers can make reservations online. It contains these functionalities.
 
-There are no user stories for deployment: it is expected that you will deploy the application to production after you finish a user story.
+Customers: Customers can create, edit and delete their reservations online within the business hours of the restaurant.
 
-There are no user stories for logging: it is expected that you will add logging to the application with enough detail to help you diagnose issues in production.
+Staff: Staff are able to view and create tables by ID and capacity. Staff can view, edit, assign and cancel current and future reservations to specific tables that are available as well. For quick navigation, staff are also able to search for reservations by phone number.
+
+## Technology Used
+Frontend: JavaScript, React, API calls, HTML, and CSS
+
+Backend: PostgreSQL, Node.js, Express, Knex, and CORS
+
+## Application Link
+Frontend: https://periodic-table-project.onrender.com
+Backend: https://periodic-tables-project.onrender.com
 
 ## Screenshots
 Dashboard listing Daily Reservations and Tables along with their status:
@@ -24,22 +32,6 @@ Search for a reservation by phone number:
 
 Reservations made within business hours:
 ![Screenshot (32)](https://github.com/dwhindman/Periodic-tables-project/assets/122843020/d8a3895a-e22c-4cfa-8831-ece809b9972f)
-
-## Application Link
-Frontend: https://periodic-table-project.onrender.com
-Backend: https://periodic-tables-project.onrender.com
-
-## Summary
-This application serves as a restaurant reservation system that allows the restaurant staff the ability to keep track of their reservations while customers can make reservations online. It contains these functionalities.
-
-Customers: Customers can create, edit and delete their reservations online within the business hours of the restaurant.
-
-Staff: Staff are able to view and create tables by ID and capacity. Staff can view, edit, assign and cancel current and future reservations to specific tables that are available as well. For quick navigation, staff are also able to search for reservations by phone number.
-
-## Technology Used
-Frontend: JavaScript, React, API calls, HTML, and CSS
-
-Backend: PostgreSQL, Node.js, Express, Knex, and CORS
 
 ## Installation
 1. Run 'npm install' in main to install the node packages.
