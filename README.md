@@ -11,15 +11,16 @@ There are no user stories for logging: it is expected that you will add logging 
 
 ## Screenshots
 Dashboard listing Daily Reservations and Tables along with their status:
-![Uploading Screenshot (29).png…]()
+
 Reservation Form:
-![Uploading Screenshot (28).png…]()
+![Screenshot (28)](https://github.com/dwhindman/Periodic-tables-project/assets/122843020/54d393f9-cb11-4829-a492-7c6cf32e8270)
+
 Create a new table for guests to sit at:
-![Uploading Screenshot (31).png…]()
+
 Search for a reservation by phone number:
-![Uploading Screenshot (30).png…]()
+
 Reservations made within business hours:
-![Screenshot (32)](https://github.com/dwhindman/Periodic-tables-project/assets/122843020/f61df6b0-1b60-4c68-8d49-e53e8c4a0a7a)
+
 ## Application Link
 Frontend: https://periodic-table-project.onrender.com
 Backend: https://periodic-tables-project.onrender.com
