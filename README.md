@@ -11,6 +11,7 @@ There are no user stories for logging: it is expected that you will add logging 
 
 ## Screenshots
 Dashboard listing Daily Reservations and Tables along with their status:
+![Screenshot (29)](https://github.com/dwhindman/Periodic-tables-project/assets/122843020/aa8540c5-2176-4c58-8033-c512256142f1)
 
 Reservation Form:
 ![Screenshot (28)](https://github.com/dwhindman/Periodic-tables-project/assets/122843020/54d393f9-cb11-4829-a492-7c6cf32e8270)
