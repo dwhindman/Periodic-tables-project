@@ -10,13 +10,21 @@ function SeatReservation(){
     const [reservation, setReservation] = useState({});
 
     useEffect(() => {
+        const abortController = new AbortController();
+
         listTables()
             .then(setTables);
+
+        return () => abortController.abort();
     }, []);
 
     useEffect(() => {
-        readReservation(reservation_id)
+        const abortController = new AbortController();
+
+        readReservation(reservation_id, abortController.signal)
             .then(setReservation);
+
+        return () => abortController.abort();
     }, [reservation_id]);
 
     const handleChange = (event) => {
