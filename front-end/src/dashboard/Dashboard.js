@@ -53,7 +53,7 @@ function Dashboard({ date }) {
       if(result){
           updateStatus(event.target.value, "cancelled");
           loadDashboard()
-          history.go();
+          history.go(-1);
       }
   };
 
